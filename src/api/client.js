@@ -2,9 +2,11 @@ import axios from 'axios';
 
 // En dev usa el proxy Vite (/api → localhost:5199).
 // En producción usa VITE_API_URL (ej: https://mi-api.railway.app/api).
-const PROD_API = 'https://inventariopyme-backend-production.up.railway.app/api';
-const baseURL = import.meta.env.VITE_API_URL
-  ?? (import.meta.env.PROD ? PROD_API : '/api');
+// En dev, Vite proxea /api → localhost:5199 (vite.config.js).
+// En producción, import.meta.env.DEV es false y Vite lo reemplaza en build time.
+const baseURL = import.meta.env.DEV
+  ? '/api'
+  : 'https://inventariopyme-backend-production.up.railway.app/api';
 
 const client = axios.create({
   baseURL,
