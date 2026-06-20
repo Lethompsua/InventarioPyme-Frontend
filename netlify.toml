@@ -4,6 +4,7 @@
 
 [build.environment]
   NODE_VERSION = "20"
+  VITE_API_URL = "https://inventariopyme-backend-production.up.railway.app/api"
 
 [[redirects]]
   from = "/*"
